@@ -116,8 +116,7 @@ You can get a reference to the component if you want, but there is almost always
 ```
 auto& rect = box.AddComponent<RenderComponent>();
 ```
-Finally, the system is set up. The update function in the render system will be called every time you update the manager. You can move this into a game loop for games, or manually call it or testing. Call update with the time
-that has elapsed since the last update. This time does not need to be the actual time. For testing, I will just use 1 second.
+Finally, the system is set up. The update function in the render system will be called every time you update the manager. You can move this into a game loop for games, or manually call it for testing. Call update with the time that has elapsed since the last update. This time does not need to be the actual time. For testing, I will just use 1 second.
 ```
 manager->Update(1);
 ```
