@@ -2,6 +2,7 @@
 This game is a very quick and unfinished game to demonstrate the utility of game development with an Entity Component System.
 
 This game uses a fully qualified ECS, meaning the data and logic are 100% separated.
+All code was written by myself.
 
 # Principles
 Here is how it works:
