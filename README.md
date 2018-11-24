@@ -101,7 +101,7 @@ Thats it! Now we have to create an entity that we can add the components to.
 ```
 auto& box = manager->AddEntity();
 ```
-This is so siple because *Entities are just containers*.
+This is so simple because *Entities are just containers*.
 Give it a name if you want:
 ```
 box.name = "mybox";
