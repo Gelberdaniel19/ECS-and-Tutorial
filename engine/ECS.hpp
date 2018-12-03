@@ -86,6 +86,7 @@ private:
 public:
 	void Update(double timedelta);
 	void Refresh();
+	void Clear();
 	
 	Entity& AddEntity();
 	template <typename T, typename ...TArgs> T& AddSystem(TArgs&& ...mArgs);
@@ -166,6 +167,15 @@ void EntityManager::Refresh()
 }
 
 /**
+ * Destroy all entities.
+ */
+void EntityManager::Clear()
+{
+	for (auto& e : entities)
+		e->Destroy();
+}
+
+/**
  * Add a system to the manager.
  */
 template <typename T, typename ...TArgs>
@@ -187,3 +197,4 @@ Entity& EntityManager::AddEntity()
 	entities.emplace_back(std::move(uPtr));
 	return *e;
 }
+
