@@ -86,7 +86,7 @@ private:
 public:
 	void Update(double timedelta);
 	void Refresh();
-	void Clear();
+	void Purge();
 	
 	Entity& AddEntity();
 	template <typename T, typename ...TArgs> T& AddSystem(TArgs&& ...mArgs);
@@ -144,7 +144,7 @@ T* Entity::GetComponent()
  * sure that the entity has every component from the mask in the system.
  */
 void EntityManager::Update(double timedelta)
-{
+{	
 	for (auto& s : systems) {
 		std::vector<Entity*> filtered;
 		for (auto& e : entities)
@@ -164,15 +164,6 @@ void EntityManager::Refresh()
 	for (int i = 0; i < entities.size(); i++)
 		if (!entities[i]->IsActive())
 			entities.erase(entities.begin() + i);
-}
-
-/**
- * Destroy all entities.
- */
-void EntityManager::Clear()
-{
-	for (auto& e : entities)
-		e->Destroy();
 }
 
 /**
@@ -198,3 +189,10 @@ Entity& EntityManager::AddEntity()
 	return *e;
 }
 
+void EntityManager::Purge()
+{
+	for (int i = 0; i < entities.size(); i++)
+		entities[i]->Destroy();
+	entities.clear();
+	this->Update(0);
+}
